@@ -1,9 +1,11 @@
+using Departments.Service_A.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Departments.Service_A.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [ServiceFilter(typeof(AccessFilterAttribute))]
     public class StatusController : Controller
     {
         private static readonly string[] Statuses = new[]
