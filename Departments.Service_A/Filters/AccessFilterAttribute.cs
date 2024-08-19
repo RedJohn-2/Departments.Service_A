@@ -11,13 +11,13 @@ namespace Departments.Service_A.Filters
 
         public AccessFilterAttribute(IConfiguration configuration)
         {
-            _authorizedIssuer = configuration["AuthorizedIssuer"]!;
+            _authorizedIssuer = configuration["SecretKey"]!;
         }
         public void OnResourceExecuted(ResourceExecutedContext _) { }
 
         public void OnResourceExecuting(ResourceExecutingContext context)
         {
-            string referrer = context.HttpContext.Request.Headers["Referer"].ToString();
+            string referrer = context.HttpContext.Request.Headers["Access-Auth-Key"].ToString();
 
             if (string.IsNullOrEmpty(referrer) || !referrer.StartsWith(_authorizedIssuer))
             {

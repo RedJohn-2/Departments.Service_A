@@ -13,15 +13,6 @@ namespace Departments.Service_A.Controllers
             "Активно", "Заблокировано"
         };
 
-
-        public StatusController() { }
-
-        [HttpGet("[action]")]
-        public ActionResult GetStatusByDepartmentId(Guid departmantId)
-        {
-            return Ok(Statuses[Random.Shared.Next(Statuses.Length)]);
-        }
-
         [HttpPost("[action]")]
         public ActionResult GetStatusesByDepartmentIds(List<Guid> guids)
         {
